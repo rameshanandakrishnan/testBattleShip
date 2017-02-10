@@ -1,0 +1,27 @@
+{
+  "name": "battleship",
+  "version": "1.0.0",
+  "description": "TDD exercise",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "browserify ./script/main.js -o ./public/script.js -t [ babelify --presets [ es2015 react ] ]"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "babelify": "^7.3.0",
+    "browserify": "^14.0.0",
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.4.1",
+    "karma-browserify": "^5.1.1",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-requirejs": "^1.1.0",
+    "requirejs": "^2.3.2",
+    "watchify": "^3.9.0"
+  }
+}
