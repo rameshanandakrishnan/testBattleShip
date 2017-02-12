@@ -1,4 +1,5 @@
 import gameBoard from '../script/gameBoard';
+import * as helper from "../script/helper";
 
 describe('GameBoard meathods ', function() {
   var boardElement;
@@ -46,6 +47,29 @@ describe('GameBoard meathods ', function() {
       }).reduce(function(x,y){return x + y;});
 
       expect(totalDeploymentValue).toEqual(8);
+    });
+
+    describe('returnNonOverlappingPosition', function() {
+      let grid = [
+        [1,1,1,1,1,1,1,1,1,1],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0]
+      ];
+
+      it('should recursivly call returnNonOverlappingPosition if the current position is not valid', function () {
+        spyOn(helper, 'getRandomNumber').and.returnValue(1);
+        let injectCorrdinates = gameBoard.returnNonOverlappingPosition(4);
+
+        expect(injectCorrdinates).toEqual({rowOfInterest:1, startOfShip:1});
+      });
     });
 
     describe('Assess Damage', function() {
@@ -112,6 +136,20 @@ describe('GameBoard meathods ', function() {
         gameBoard.assessDamage(['C','3']);
 
         expect(console.log).toHaveBeenCalledWith('We have already hit that target.');
+      });
+    });
+
+    describe('isValidRequest', function() {
+      it('should return false if an invalid corrdinates are entered', function() {
+        expect(gameBoard.isValidRequest('z', '1')).toEqual(false);
+        expect(gameBoard.isValidRequest('a', 'u')).toEqual(false);
+        expect(gameBoard.isValidRequest('2', '1')).toEqual(false);
+      });
+
+      it('should return true if a valid corrdinates are entered', function() {
+        expect(gameBoard.isValidRequest('B', '1')).toEqual(true);
+        expect(gameBoard.isValidRequest('A', '2')).toEqual(true);
+        expect(gameBoard.isValidRequest('D', '9')).toEqual(true);
       });
     });
   });

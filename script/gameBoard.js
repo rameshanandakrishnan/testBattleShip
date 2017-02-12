@@ -1,4 +1,4 @@
-import {getRandomNumber, rotateArray} from "./helper";
+import * as helper from "./helper";
 
 var gameBoard = {
 
@@ -64,8 +64,8 @@ var gameBoard = {
 
       // randomFunction returns 1 or 0
       // if 1 rotate array
-      if(getRandomNumber(0,1) === 1){
-        that.gridModel = rotateArray(that.gridModel);
+      if(helper.getRandomNumber(0,1) === 1){
+        that.gridModel = helper.rotateArray(that.gridModel);
       }
 
       positionOfShip = that.returnNonOverlappingPosition(shipLength);
@@ -79,8 +79,8 @@ var gameBoard = {
   },
 
   returnNonOverlappingPosition(shipLength) {
-    var rowToInject = getRandomNumber(0, 9);
-    var startOfShip = getRandomNumber(0, 9-shipLength);
+    var rowToInject = helper.getRandomNumber(0, 9);
+    var startOfShip = helper.getRandomNumber(0, 9-shipLength);
     var cloneOfRow = JSON.parse(JSON.stringify(this.gridModel[rowToInject]));
 
     var selectedArray = cloneOfRow.splice(startOfShip, (startOfShip+shipLength+1)); //+1 to second parameter if you dont want boats touching?
@@ -116,7 +116,7 @@ var gameBoard = {
   },
 
   isValidRequest(corrdinatesOfAttack) {
-    if (!this.rows[corrdinatesOfAttack[0]] && !(corrdinatesOfAttack[0] > 0 && corrdinatesOfAttack[0] < 10) ) {
+    if (!this.rows[corrdinatesOfAttack[0]] && !(parseInt(corrdinatesOfAttack[1]) > 0 && parseInt(corrdinatesOfAttack[1]) < 10) ) {
       console.log('enter a valid cordinate, captain!');
       return false;
     }
