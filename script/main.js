@@ -3,7 +3,7 @@
  */
 
 import {getRandomNumber, cloneArray} from './helper';
-//var helper  = require('./helper');
+
 import gameBoard from './gameBoard';
 
 
