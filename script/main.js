@@ -1,11 +1,5 @@
-/**
- * Main scripts - Import JS modules here:
- */
-
 import {getRandomNumber, cloneArray} from './helper';
-
 import gameBoard from './gameBoard';
-
 
 const gridTemplate = [
 	[0,0,0,0,0,0,0,0,0,0],
