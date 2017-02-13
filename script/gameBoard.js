@@ -83,7 +83,7 @@ var gameBoard = {
     var startOfShip = helper.getRandomNumber(0, 9-shipLength);
     var cloneOfRow = JSON.parse(JSON.stringify(this.gridModel[rowToInject]));
 
-    var selectedArray = cloneOfRow.splice(startOfShip, (startOfShip+shipLength+1)); //+1 to second parameter if you dont want boats touching?
+    var selectedArray = cloneOfRow.splice(startOfShip, (startOfShip+shipLength+1));
 
     if( selectedArray.indexOf(1) > -1 ){
       this.returnNonOverlappingPosition(shipLength)//call recursive function to find a new posiiton
