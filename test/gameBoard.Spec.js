@@ -1,6 +1,6 @@
 import gameBoard from '../script/gameBoard';
 import * as helper from "../script/helper";
-
+ 
 describe('GameBoard meathods ', function() {
   var boardElement;
 
